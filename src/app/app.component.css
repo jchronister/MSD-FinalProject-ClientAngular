@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.logout {border-radius: 20;
+         margin-left: 15px;}
+
+
+
+.info {
+  margin-left:10px;
+
+}
+
+.notification {
+  margin-right: 20px;
+}

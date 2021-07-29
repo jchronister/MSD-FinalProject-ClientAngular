@@ -1,0 +1,109 @@
+<div>
+<div>
+<form [formGroup]="upsertForm" (ngSubmit)="upsertSubmit()">
+
+  <h2 class="center">Please Fillout Form to Create an Account</h2>
+
+  <div class="center">
+    <!-- Email -->
+    <cInput
+      class="input"
+      title = "Email"
+      type = "email"
+      [control] = "email"
+      placeholder = "username@domain.com"
+    ></cInput>
+
+    <!-- Password -->
+    <cInput
+      class="input"
+      title = "Password"
+      type = "text"
+      [control] = "password"
+      placeholder = "At Least 4 Characters"
+    ></cInput>
+
+    <!-- Username -->
+    <cInput
+      class="input"
+      title = "User Name"
+      [control] = "username"
+      placeholder = "JDoe"
+  ></cInput>
+    </div>
+    <div class="center">
+    <!-- Fullname -->
+    <cInput
+      class="input"
+      title = "Full Name"
+      [control] = "fullname"
+      placeholder = "John Doe"
+    ></cInput>
+
+      <!-- Phone -->
+      <cInput
+      class="input"
+      title = "Phone Number"
+      [control] = "phone"
+      placeholder = "xxx-xxx-xxxx"
+    ></cInput>
+
+    <!-- Address -->
+    <cInput
+      class="input"
+      title = "Address"
+      [control] = "address"
+      placeholder = "300 Pratt Street"
+    ></cInput>
+    </div>
+    <div class="center">
+    <!-- City -->
+    <mat-form-field  class="select">
+      <mat-label>City</mat-label>
+      <mat-select [formControl]="city">
+        <mat-option *ngFor="let c of cities" [value]="c">
+          {{c}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- State -->
+    <mat-form-field class="select">
+      <mat-label>Status</mat-label>
+      <mat-select [formControl]="state">
+        <mat-option *ngFor="let s of states" [value]="s">
+          {{s}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <!-- Zip -->
+    <mat-form-field class="select">
+      <mat-label>Zip</mat-label>
+      <mat-select [formControl]="zip">
+        <mat-option *ngFor="let z of zips" [value]="z">
+          {{z}}
+        </mat-option> 
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+
+    <div class="center">
+    <button 
+      class="submit"
+      type="submit"
+      [disabled]="!upsertForm.valid"
+      color="primary" 
+      mat-raised-button 
+    >{{submitText}}</button>
+    </div>
+
+  </form>
+
+  <h2 class="error">{{error}}</h2>
+
+</div>
+</div>

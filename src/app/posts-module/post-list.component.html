@@ -1,0 +1,29 @@
+<div class="container">
+  <div *ngIf="error" class="error">{{error}}</div>
+
+
+  <table class="image">
+    
+    <tr *ngFor="let imageGroup of imagesAry">
+      <td *ngFor="let image of imageGroup">
+        <div class="info bold">User: {{image.user}}</div>
+        <div class="info"><a class="hoverred" href={{image.thumbnailURL}} target="_blank" rel="noopener noreferrer">Download</a>
+        <span class="copylink" cdkCopyToClipboard={{image.thumbnailURL}}>Copy Link</span></div>
+        <img src={{image.thumbnailURL}}>
+        <div class="info">{{image.description}}</div>
+        <p *ngIf="image.flagged" class="flagged">Image Flagged as Inappropriate</p>
+        <button class="hoverred" mat-raised-button *ngIf="!image.flagged && !admin" (click)="flag(image)">Flag Inappropriate</button> 
+        <button class="btn hoverred" mat-raised-button *ngIf="admin" (click)="clearFlag(image)">Clear Flag</button>
+        <button class="btn hoverred" mat-raised-button (click)="deleteImage(image)" *ngIf="admin">Delete</button>
+      </td>
+    </tr>   
+   
+  </table>
+
+<mat-paginator [length]="totalPages"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[9]"
+              (page)="page($event)">>
+</mat-paginator>
+
+</div>
